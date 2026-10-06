@@ -1,0 +1,6 @@
+agente-bundle.js
+jspdf.umd.min.js
+node_modules/
+dist/
+*.zip
+package-lock.json

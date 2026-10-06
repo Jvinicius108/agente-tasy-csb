@@ -1,0 +1,28 @@
+{
+  "name": "agente-tasy-csb",
+  "version": "40.3.0",
+  "private": true,
+  "description": "Agente de faturamento automatico para o Tasy CSB",
+  "scripts": {
+    "build": "node build.js",
+    "build:min": "cross-env NODE_ENV=production node build.js",
+    "watch": "node watch.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check:version": "node scripts/check-version.js",
+    "dist": "node package.js"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.15.0",
+    "cross-env": "^7.0.3",
+    "esbuild": "^0.24.0",
+    "eslint": "^9.15.0",
+    "globals": "^15.12.0",
+    "prettier": "^3.4.0"
+  },
+  "engines": {
+    "node": ">=18.18.0"
+  }
+}

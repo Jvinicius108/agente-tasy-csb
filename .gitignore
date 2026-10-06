@@ -1,0 +1,10 @@
+node_modules/
+dist/
+agente-bundle.js
+*.zip
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
+npm-debug.log*

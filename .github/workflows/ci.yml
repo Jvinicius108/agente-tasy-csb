@@ -1,0 +1,45 @@
+name: CI
+
+on:
+    push:
+        branches: [main, master]
+    pull_request:
+        branches: [main, master]
+
+jobs:
+    build-and-check:
+        name: Lint · Versão · Build
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Setup Node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '20'
+                  cache: 'npm'
+
+            - name: Instalar dependências
+              run: npm ci
+
+            - name: Verificar versão unificada
+              run: npm run check:version
+
+            - name: Lint
+              run: npm run lint
+
+            - name: Verificar formatação
+              run: npm run format:check
+
+            - name: Build
+              run: npm run build
+
+            - name: Confirmar que o bundle foi gerado
+              run: |
+                  if [ ! -f agente-bundle.js ]; then
+                    echo "❌ agente-bundle.js não foi gerado"
+                    exit 1
+                  fi
+                  echo "✅ Bundle gerado com sucesso ($(wc -c < agente-bundle.js) bytes)"
